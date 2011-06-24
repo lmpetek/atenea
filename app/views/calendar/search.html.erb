@@ -1,8 +1,8 @@
-<h2>Search</h2>
+<h2>Busqueda</h2>
 <% form_for '', :url => {:action => :search, :search => 'true'} do %>
-<p>Calendar: <%= select_tag 'calendar_id', options_for_select(['All']+@calendars.collect{|c| [c.title, c.id]})%>
-<p>Search Term: <%= text_field_tag :term %></p>
-<p>Start Date: <%= text_field_tag :start %></p>
-<p>End Date: <%= text_field_tag :end %></p>
+<p>Calendario: <%= select_tag 'calendar_id', options_for_select(['All']+@calendars.collect{|c| [c.title, c.id]})%>
+<p>Termino buscado: <%= text_field_tag :term %></p>
+<p>Fecha inicio: <%= text_field_tag :start %></p>
+<p>Fecha fin: <%= text_field_tag :end %></p>
 <%= submit_tag 'Search' %>
 <% end %>

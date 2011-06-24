@@ -12,10 +12,10 @@
 				<h1>Ejemplo de Agenda</h1>
 					<div>
 						<% if @account %>
-							<%= link_to 'Home', :controller => :calendar, :action => :index %> | 
-							<%= link_to 'New Event', :controller => :calendar, :action => :new %> | 
-							<%= link_to 'New Calendar', :controller => :calendar, :action => :new_calendar %> | 
-							<%= link_to 'Search', :controller => :calendar, :action => :search %> | 
+							<%= link_to 'Principal', :controller => :calendar, :action => :index %> | 
+							<%= link_to 'Nuevo evento', :controller => :calendar, :action => :new %> | 
+							<%= link_to 'Nuevo calendario', :controller => :calendar, :action => :new_calendar %> | 
+							<%= link_to 'Buscar', :controller => :calendar, :action => :search %> | 
 							<%= link_to 'Logout', :controller => :calendar, :action => :logout %>
 						<% else %>
 							<%= link_to 'Login', :controller => :calendar, :action => :login %>

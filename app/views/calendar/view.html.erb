@@ -1,20 +1,20 @@
 <% @title = 'Event Details' %>
 <%= button_to_function 'Edit', "window.location = '#{url_for(:action => :edit, :event_id => @event.id)}';"%>
-<p>Title: <%= @event.title %></p>
-<p>Notes: <%= @event.content %></p>
-<p>Calendar: <%= link_to @event.calendar.title, :action => :events, :calendar_id => @event.calendar.id %></p>
-<p>Published: <%= @event.published.strftime("%m/%d/%Y @ %I:%M %p") %></p>
-<p>Updated: <%= @event.updated.strftime("%m/%d/%Y @ %I:%M %p") %></p>
-<p>Edited: <%= @event.edited.strftime("%m/%d/%Y @ %I:%M %p") %></p>
-<p>Start Date/Time: <%= @event.start_time ? @event.start_time.strftime("%m/%d/%Y @ %I:%M %p") : @event.recurrence.start.strftime("%m/%d/%Y @ %I:%M %p") %></p>
-<p>End Date/Time: <%= @event.end_time ? @event.end_time.strftime("%m/%d/%Y @ %I:%M %p") : @event.recurrence.end.strftime("%m/%d/%Y @ %I:%M %p") %></p>
-<p>All Day Event: <%= @event.all_day %></p>
-<p>Status: <%= @event.status %></p>
-<p>Where: <%= @event.where %></p>
-<p>Recurrence: <%= @event.recurrence.to_s %></p>
-<p>Reminder: 
+<p>Titulo: <%= @event.title %></p>
+<p>Notas: <%= @event.content %></p>
+<p>Calendario: <%= link_to @event.calendar.title, :action => :events, :calendar_id => @event.calendar.id %></p>
+<p>Publicado: <%= @event.published.strftime("%m/%d/%Y @ %I:%M %p") %></p>
+<p>Actualizado: <%= @event.updated.strftime("%m/%d/%Y @ %I:%M %p") %></p>
+<p>Editado: <%= @event.edited.strftime("%m/%d/%Y @ %I:%M %p") %></p>
+<p>Comienzo Date/Time: <%= @event.start_time ? @event.start_time.strftime("%m/%d/%Y @ %I:%M %p") : @event.recurrence.start.strftime("%m/%d/%Y @ %I:%M %p") %></p>
+<p>Finaliza Date/Time: <%= @event.end_time ? @event.end_time.strftime("%m/%d/%Y @ %I:%M %p") : @event.recurrence.end.strftime("%m/%d/%Y @ %I:%M %p") %></p>
+<p>Evento de todo el día: <%= @event.all_day %></p>
+<p>Estado: <%= @event.status %></p>
+<p>Donde: <%= @event.where %></p>
+<p>Repetitivo: <%= @event.recurrence.to_s %></p>
+<p>Recordar: 
 <div><% form_for '', :url => {:action => :add_recurrence, :event_id => @event.id} do %>
-Method: <%= select_tag 'method', options_for_select(["email", "alert", "none"]) %> Mintues Before: <%= select_tag 'minutes', options_for_select(@minutes) %> <%= submit_tag 'Save'%>
+Method: <%= select_tag 'method', options_for_select(["email", "alert", "none"]) %> Minutos antes: <%= select_tag 'minutes', options_for_select(@minutes) %> <%= submit_tag 'Save'%>
 <% end %>
 </div>
 <ul><% @event.reminder.each do |r| %>
@@ -22,7 +22,7 @@ Method: <%= select_tag 'method', options_for_select(["email", "alert", "none"]) 
 	<% end %>
 	</ul></p>
 	
-<p>Attendees:
+<p>Asistentes:
 <div><% form_for '', :url => {:action => :add_attendee, :event_id => @event.id} do %>
 Name: <%= text_field_tag 'name' %> Email: <%= text_field_tag 'email' %> <%= submit_tag 'Add'%>
 <% end %>
