@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Agenda Medica - <%= @title ? @title : params[:action].gsub("_", " ").capitalize %></title>
+	</head>
+	<body>
+		<table style='width: 100%;'>
+			<tr>
+				<td style='width: 20%;'></td>
+				<td style='width: 60%;'>
+				<h1>Ejemplo de Agenda Medica</h1>
+					<div>
+						<% if @account %>
+							<%= link_to 'Home', :controller => :calendar, :action => :index %> | 
+							<%= link_to 'New Event', :controller => :calendar, :action => :new %> | 
+							<%= link_to 'New Calendar', :controller => :calendar, :action => :new_calendar %> | 
+							<%= link_to 'Search', :controller => :calendar, :action => :search %> | 
+							<%= link_to 'Logout', :controller => :calendar, :action => :logout %>
+						<% else %>
+							<%= link_to 'Login', :controller => :calendar, :action => :login %>
+						<% end %>
+					</div>
+					<h2><%= @title ? @title : params[:action].gsub("_", " ").capitalize %></h2>
+					<% if flash[:warning] %>
+						<div style='background: #ff0000; padding: 10px;'><%= flash[:warning] %></div>
+					<% end %>
+					<% if flash[:notice] %>
+						<div style='background: #00ff00; padding: 10px;'><%= flash[:notice] %></div>
+					<% end %>
+					<%= yield %>
+				</td>
+				<td style='width: 20%;'></td>
+			</tr>
+		</table>
+	</body>
+</html>
