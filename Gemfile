@@ -7,6 +7,7 @@ gem 'gcal4ruby'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
+gem 'google-spreadsheet-ruby', '~> 0.1.5'
 
 # Use unicorn as the web server
 # gem 'unicorn'
