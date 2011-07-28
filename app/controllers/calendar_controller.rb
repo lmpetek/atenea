@@ -8,7 +8,7 @@ class CalendarController < ApplicationController
   
   def index
     @account.check_public = false
-    @calendars = @account.calendars
+    @calendars = @account.calendars.where(:title => 'consultorio')
     @events = @account.events
     @account.check_public = true
   end
