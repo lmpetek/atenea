@@ -16,9 +16,9 @@
 							<%= link_to 'Nuevo evento', :controller => :calendar, :action => :new %> | 
 							<%= link_to 'Nuevo calendario', :controller => :calendar, :action => :new_calendar %> | 
 							<%= link_to 'Buscar', :controller => :calendar, :action => :search %> | 
-							<%= link_to 'Logout', :controller => :calendar, :action => :logout %>
+							<%= link_to 'Salir', :controller => :calendar, :action => :logout %>
 						<% else %>
-							<%= link_to 'Login', :controller => :calendar, :action => :login %>
+							<%= link_to 'Ingresar', :controller => :calendar, :action => :login %>
 						<% end %>
 					</div>
 					<h2><%= @title ? @title : params[:action].gsub("_", " ").capitalize %></h2>

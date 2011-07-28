@@ -48,9 +48,9 @@ class CalendarController < ApplicationController
       @event.send("#{key}=", value)
     end
     if @event.save
-      flash[:notice] = "Event updated"
+      flash[:notice] = "Evento actualizado"
     else
-      flash[:warning] = "Could not update event"
+      flash[:warning] = "No es posible actualizar el evento"
     end
     redirect_to :action => :view, :event_id => @event.id
   end
@@ -58,9 +58,9 @@ class CalendarController < ApplicationController
   def delete_event
     @event = Event.find(@account, {:id => params[:event_id]})
     if @event.delete
-      flash[:notice] = 'Event successfully deleted'
+      flash[:notice] = 'Evento borrado satisfactoriamente'
     else 
-      flash[:warning] = 'Could not delete event!'
+      flash[:warning] = 'No es posible borrar el evento!'
     end
     redirect_to request.referer
   end
@@ -77,9 +77,9 @@ class CalendarController < ApplicationController
       end
     end
     if @event.save
-      flash[:notice] = 'Reminder deleted'
+      flash[:notice] = 'Recordatorio borrado'
     else
-      flash[:warning] = 'Could not delete reminder'
+      flash[:warning] = 'No es posible borrar el recordatorio'
     end
     redirect_to :action => :view, :event_id => @event.id
   end
@@ -92,9 +92,9 @@ class CalendarController < ApplicationController
       {:method => 'none'}
     end
     if @event.save
-      flash[:notice] = 'Reminder added'
+      flash[:notice] = 'Recordatorio adicionado'
     else
-      flash[:warning] = 'Could not add reminder'
+      flash[:warning] = 'No es posible agregar el recordatorio'
     end
     redirect_to :action => :view, :event_id => @event.id
   end
@@ -132,9 +132,9 @@ class CalendarController < ApplicationController
   def save_calendar
     cal = Calendar.new(@account, {:title => params[:title]})
     if cal.save
-      flash[:notice] = 'Calendar saved!'
+      flash[:notice] = 'Calendario guardado!'
     else
-      flash[:warning] = 'Could not save calendar!'
+      flash[:warning] = 'No es posible grabar el calendario!'
     end
     redirect_to :action => :index
   end
@@ -142,9 +142,9 @@ class CalendarController < ApplicationController
   def delete_calendar
     @calendar = Calendar.find(@account, {:id => params[:calendar_id]})
     if @calendar.delete
-      flash[:notice] = 'Calendar Deleted'
+      flash[:notice] = 'Calendario Borrado'
     else
-      flash[:warning] = 'Couldn\'t delete calendar'
+      flash[:warning] = 'No es posible borrar el calendario'
     end
     redirect_to request.referer
   end
@@ -175,14 +175,14 @@ class CalendarController < ApplicationController
     @username = params[:username]
     @password = params[:password]
     if params[:username].empty? or params[:password].empty?
-      flash[:warning] = 'You must enter a username and password.'
+      flash[:warning] = 'Ud debe ingresar usuario y clave.'
       render :action => :login and return 
     end
     begin
       service = Service.new
       service.authenticate(params[:username], params[:password])
     rescue AuthenticationFailed
-      flash[:warning] = 'Username or password is incorrect!'
+      flash[:warning] = 'Usuario y/o clave son incorrectos!'
       render :action => :login and return
     end
     session[:username] = params[:username]
@@ -193,7 +193,7 @@ class CalendarController < ApplicationController
   def logout
     session[:username] = nil
     session[:password] = nil
-    flash[:notice] = 'You have been logged out.'
+    flash[:notice] = 'Ud esta fuera del sistema.'
     redirect_to :action => :login
   end
 end
